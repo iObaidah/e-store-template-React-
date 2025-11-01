@@ -35,5 +35,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "e-store template",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "e-store-template"
+  },
+  "keywords": [
+    "e-store",
+    "template"
+  ],
+  "author": "Obaidah Azizi",
+  "license": "ISC"
 }
