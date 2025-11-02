@@ -1,0 +1,72 @@
+.Business {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 320px;
+  margin: 0 0.5rem 2.3rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  box-sizing: border-box; /* Important for exact dimensions */
+}
+
+.Business .image-container {
+  height: 180px; /* Reduced to fit within 320px total height */
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.Business .image-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.Business h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.Business-information {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1; /* Takes remaining space */
+}
+
+.Business-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Better spacing in fixed height */
+}
+
+.Business-address p {
+  margin: 0.2rem 0;
+  font-size: 0.88rem;
+  color: #666;
+}
+
+.Business-reviews {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  justify-content: space-between; /* Better spacing in fixed height */
+}
+
+.Business-reviews h3 {
+  margin: 0.2rem 0;
+  font-size: 0.88rem;
+}
+
+.Business-reviews .rating {
+  color: #cca353;
+  font-weight: 600;
+}
+
+.Business-reviews p {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.88rem;
+  color: #666;
+}
