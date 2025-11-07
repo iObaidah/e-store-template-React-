@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Product from './components/Product/Product';
 import ProductList from './components/ProductList/ProductList';
+import SearchBar from './components/SearchBar/SearchBar';
 
 
 import pizza from './assets/pizza.jpg';
@@ -105,7 +106,8 @@ function App() {
   return (
     <div className="App">
       <h1>E-Store</h1>
-      <ProductList items={items}/>
+      <SearchBar />
+      <ProductList items={items} />
       <Test />
     </div>
   );
