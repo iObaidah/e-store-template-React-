@@ -11,9 +11,18 @@ function SearchBar() {
     };
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
-    }
+    };
     const handleSortClick = (sortOption) => {
         setSortBy(sortOption);
+    };
+    const handleSearch = (event) => {
+        event.preventDefault();
+        console.log('Searching for:', {
+            term: searchTerm,
+            location: location,
+            sortBy: sortBy,
+        });
+        alert(`Searching for ${searchTerm} in ${location} sorted by ${sortBy}`);
     };
 
     return (
@@ -39,17 +48,38 @@ function SearchBar() {
                         onChange={handleLocationChange} // Use location handler
                     />
                 </div>
-                <button className="search-button">
+                <button
+                    className="search-button"
+                    onClick={handleSearch}
+                >
                     Search
                 </button>
             </div>
             <div className="sorting-options">
-                <button
+                <input
+                    type="radio"
+                    id="best-match"
+                    name="sort-option"
                     className={`sort-option ${sortBy === 'best_match' ? 'active' : ''}`}
-                    onClick={() => handleSortClick('best_match')}
-                >
-                    Best Match
-                </button>
+                    onClick={() => { handleSortClick('best_match') }}
+                />
+                <label htmlFor="best-match"> Best Match</label>
+                <input
+                    type="radio"
+                    id="highest-rated"
+                    name="sort-option"
+                    className={`sort-option ${sortBy === 'highest_rated' ? 'active' : ''}`}
+                    onClick={() => { handleSortClick('highest_rated') }}
+                />
+                <label htmlFor="highest-rated"> Highest Rated</label>
+                <input
+                    type="radio"
+                    id="most-reviewed"
+                    name="sort-option"
+                    className={`sort-option ${sortBy === 'most_reviewed' ? 'active' : ''}`}
+                    onClick={() => { handleSortClick('most_reviewed') }}
+                />
+                <label htmlFor="most-reviewed"> Most Reviewed</label>
             </div>
         </div>
     );
