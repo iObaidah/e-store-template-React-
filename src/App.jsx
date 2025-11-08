@@ -1,15 +1,39 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import Product from './components/Product/Product';
 import ProductList from './components/ProductList/ProductList';
 import SearchBar from './components/SearchBar/SearchBar';
-
-
 import pizza from './assets/pizza.jpg';
 import Test from './components/Test';
+import Yelp from './utils/yelp';
 
 function App() {
-  const items = [
+  const [searchTerm, setSearchTerm] = useState('');
+  const [location, setLocation] = useState('');
+  const [sortBy, setSortBy] = useState('best_match');
+  const [businesses, setBusinesses] = useState([]);
+
+  // Test Yelp service on component mount
+  // useEffect(() => {
+  //   console.log('🧪 Testing Yelp service...');
+  //   Yelp.search('pizza', 'New York', 'best_match')
+  //     .then(businesses => {
+  //       console.log('✅ Yelp service working! Businesses:', businesses);
+  //       setBusinesses(businesses);
+  //     })
+  //     .catch(error => {
+  //       console.error('❌ Yelp service error:', error);
+  //     });
+  // }, []);
+
+  // Search function
+  const searchYelp = async (term, location, sortBy) => {
+    console.log('🔍 Performing search...');
+    const businesses = await Yelp.search(term, location, sortBy);
+    setBusinesses(businesses);
+  };
+
+  // Fallback data
+  const fallbackBusinesses = [
     {
       imageSrc: pizza,
       name: 'MarginOtto Pizzeria',
@@ -76,38 +100,21 @@ function App() {
       rating: 4.3,
       reviewCount: 95
     }
-  ]
-
-  // Sample business data as specified in requirements
-  const firstProduct = {
-    imageSrc: pizza,
-    name: 'MarginOtto Pizzeria',
-    address: '1010 Paddington Way',
-    city: 'Flavortown',
-    state: 'NY',
-    zipCode: '10101',
-    category: 'Italian',
-    rating: 4.5,
-    reviewCount: 90
-  };
-  // Second sample business to demonstrate reusability
-  const secondProduct = {
-    imageSrc: pizza,
-    name: 'Sushi Palace',
-    address: '456 Ocean Avenue',
-    city: 'Seaside',
-    state: 'CA',
-    zipCode: '90210',
-    category: 'Japanese',
-    rating: 4.8,
-    reviewCount: 120
-  };
+  ];
 
   return (
     <div className="App">
-      <h1>E-Store</h1>
-      <SearchBar />
-      <ProductList items={items} />
+      <h1>ravenous</h1>
+      <SearchBar
+        searchTerm={searchTerm}
+        location={location}
+        sortBy={sortBy}
+        onSearchChange={setSearchTerm}
+        onLocationChange={setLocation}
+        onSortChange={setSortBy}
+        onSearch={searchYelp}
+      />
+      <ProductList items={businesses.length > 0 ? businesses : fallbackBusinesses} />
       <Test />
     </div>
   );

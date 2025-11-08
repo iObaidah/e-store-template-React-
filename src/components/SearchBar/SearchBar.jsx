@@ -1,28 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import './SearchBar.css';
 
-function SearchBar() {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [location, setLocation] = useState('');
-    const [sortBy, setSortBy] = useState('best_match');
+function SearchBar(props) {
+    const {
+        searchTerm,
+        location,
+        sortBy,
+        onSearchChange,
+        onLocationChange,
+        onSortChange,
+        onSearch
+    } = props;
 
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
+        onSearchChange(event.target.value);
     };
+
     const handleLocationChange = (event) => {
-        setLocation(event.target.value);
+        onLocationChange(event.target.value);
     };
+
     const handleSortClick = (sortOption) => {
-        setSortBy(sortOption);
+        onSortChange(sortOption);
     };
+
     const handleSearch = (event) => {
         event.preventDefault();
-        console.log('Searching for:', {
-            term: searchTerm,
-            location: location,
-            sortBy: sortBy,
-        });
-        alert(`Searching for ${searchTerm} in ${location} sorted by ${sortBy}`);
+        console.log('Searching with:', { searchTerm, location, sortBy });
+        onSearch(searchTerm, location, sortBy);
     };
 
     return (
@@ -33,7 +38,7 @@ function SearchBar() {
                     <input
                         id="search-term"
                         type="text"
-                        placeholder="Search products..."
+                        placeholder="Search businesses..."
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
@@ -44,8 +49,8 @@ function SearchBar() {
                         id="location"
                         type="text"
                         placeholder="Location..."
-                        value={location}             // Connect to location
-                        onChange={handleLocationChange} // Use location handler
+                        value={location}
+                        onChange={handleLocationChange}
                     />
                 </div>
                 <button
@@ -61,25 +66,30 @@ function SearchBar() {
                     id="best-match"
                     name="sort-option"
                     className={`sort-option ${sortBy === 'best_match' ? 'active' : ''}`}
-                    onClick={() => { handleSortClick('best_match') }}
+                    checked={sortBy === 'best_match'}
+                    onChange={() => handleSortClick('best_match')}
                 />
-                <label htmlFor="best-match"> Best Match</label>
+                <label htmlFor="best-match">Best Match</label>
+                
                 <input
                     type="radio"
                     id="highest-rated"
                     name="sort-option"
                     className={`sort-option ${sortBy === 'highest_rated' ? 'active' : ''}`}
-                    onClick={() => { handleSortClick('highest_rated') }}
+                    checked={sortBy === 'highest_rated'}
+                    onChange={() => handleSortClick('highest_rated')}
                 />
-                <label htmlFor="highest-rated"> Highest Rated</label>
+                <label htmlFor="highest-rated">Highest Rated</label>
+                
                 <input
                     type="radio"
                     id="most-reviewed"
                     name="sort-option"
                     className={`sort-option ${sortBy === 'most_reviewed' ? 'active' : ''}`}
-                    onClick={() => { handleSortClick('most_reviewed') }}
+                    checked={sortBy === 'most_reviewed'}
+                    onChange={() => handleSortClick('most_reviewed')}
                 />
-                <label htmlFor="most-reviewed"> Most Reviewed</label>
+                <label htmlFor="most-reviewed">Most Reviewed</label>
             </div>
         </div>
     );
