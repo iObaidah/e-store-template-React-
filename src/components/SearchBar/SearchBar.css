@@ -1,92 +1,96 @@
-.search-bar {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    margin-bottom: 2rem;
+.SearchBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('./background_search_desktop.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 25rem;
 }
 
-.search-bar form {
-    display: flex;
+.SearchBar-sort-options ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.22rem;
+  color: #ffffff;
+}
+
+.SearchBar-sort-options li {
+  cursor: pointer;
+  width: 4.4rem;
+  border-bottom: 2px solid white;
+  padding: 0.1rem;
+  line-height: 1.13;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.83rem;
+  transition: color 0.25s;
+  list-style: none;
+}
+
+.SearchBarSortOptions li:hover {
+  color: #d4cfcf;
+}
+
+.SearchBarSortOptions li.active,
+.SearchBarSortOptions li.active:hover {
+  border-bottom: 2px solid #f0c36c;
+  color: #f0c36c;
+}
+
+.SearchBar-fields {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.88rem;
+}
+
+.SearchBar-fields input {
+  width: 21rem;
+  padding: 0.66rem 1rem;
+  margin-right: 2.22rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 0.77rem;
+  font-weight: 500;
+}
+
+.SearchBar-fields input:last-child {
+  margin-right: 0;
+}
+
+.SearchBar-submit {
+  text-align: center;
+}
+
+.SearchBar-submit a {
+  border-radius: 4px;
+  padding: 0.72rem 1.7rem;
+  background-color: #cca353;
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 0.5s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.SearchBar-submit a:hover {
+  cursor: pointer;
+  background-color: #a7874b;
+}
+
+@media only screen and (max-width: 560px) {
+  .SearchBar-sort-options ul {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .SearchBar-fields {
     flex-direction: column;
-    gap: 1rem;
-}
-
-.search-inputs {
-    display: flex;
-    gap: 1rem;
-    align-items: end;
-}
-
-.search-field {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.search-field label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: #333;
-}
-
-.search-field input {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.search-button {
-    padding: 0.75rem 1.5rem;
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.search-button:hover {
-    background: #e04444;
-}
-
-.sorting-options {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.sorting-options label {
-    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background 0.3s;
-}
+  }
 
-.sorting-options label:hover {
-    background: #e9ecef;
-}
-
-.sorting-options input[type="radio"] {
-    margin: 0;
-}
-
-.sorting-options input[type="radio"]:checked + span {
-    font-weight: bold;
-    color: #ff4d4d;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .search-inputs {
-        flex-direction: column;
-    }
-    
-    .sorting-options {
-        flex-wrap: wrap;
-    }
+  .SearchBar-fields input {
+    margin-right: 0;
+    margin-bottom: 0.86rem;
+  }
 }

@@ -2,19 +2,19 @@ import React from "react";
 import './Product.css';
 import pizza from '../../assets/pizza.jpg';
 
-function Product(props) {
-    const product = props.product || {
-        imageSrc: pizza,
-        name: 'MarginOtto Pizzeria',
-        address: '1010 Paddington Way',
-        city: 'Flavortown',
-        state: 'NY',
-        zipCode: '10101',
-        category: 'Italian',
-        rating: 4.5,
-        reviewCount: 90
-    }
+const product = {
+    imageSrc: pizza,
+    name: 'MarginOtto Pizzeria',
+    address: '1010 Paddington Way',
+    city: 'Flavortown',
+    state: 'NY',
+    zipCode: '10101',
+    category: 'Italian',
+    rating: 4.5,
+    reviewCount: 90
+};
 
+function Product() {
     return (
         <div className="product-card">
             <figure className="img-container">
