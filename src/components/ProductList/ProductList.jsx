@@ -5,12 +5,14 @@ import './ProductList.css';
 function ProductList(props) {
     return (
         <div className="product-list">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+            {props.products.map((item, index) => {
+                return (
+                    <Product 
+                        key={index}
+                        product={item}
+                    />
+                );
+            })}
         </div>
     )
 }
